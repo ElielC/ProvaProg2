@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+h3 {
+  margin: 0;
+}
+
+body,
+html {
+  height: 100vh;
+  width: 100%;
+  background-color: #fafafec0;
+}
+
+main.container-fluid {
+  padding: 10px 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 20px;
+  height: 100%;
+}
+
+div.output {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.fill-content-flex {
+  flex: 1 1 auto;
+  min-height: 1px;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  /* height: 100px
+    verificar
+  */
+}
+
+.tableFixHead thead {
+  position: sticky;
+  top: 0;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.a-title{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.a-page{
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.bg-green{
+  background-color: #2FB86E;
+}
+
+.ok-button{
+  background-color: #2FB86E;
+  color: #fff;
+}
+
+.ok-button:hover{
+  background-color: #20804d;
+  color: #fff;
+}
+
+.not-button{
+  background-color: #e02c2c;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.not-button:hover{
+  background-color: #b92727;
+  color: #fff;
+}
+
+.list-button{
+  background-color: #2a57ee;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.list-button:hover{
+  background-color: #2346bb;
+  color: #fff;
+}
+
+.card-style{
+  border-width: 2px;
+  border-color: #2FB86E;
+}
+
+.button-container{
+  justify-content: right;
+}
+
+@media only screen and (max-width: 800px){
+  .card-style{
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .card-style{
+    max-width: 300px;
+  }
+}

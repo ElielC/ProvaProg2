@@ -1,0 +1,98 @@
+{% extends 'template.html' %}
+{% load filters %}
+
+{% block header %}
+<a class="a-page">Lista</a>
+{% endblock header %}
+
+{% block content   %}
+<div class="card card-style">
+  <div class="card-header">
+    <h5 class="card-title">Lista de Professores</h5>
+  </div>
+  <div class="card-body">
+    <div class="text-right button-container">
+      <a class="btn not-button" href="{% url 'home' %}">Voltar</a>
+      <a class="btn ok-button" href="{% url 'professor-create' %}">Adicionar Professor</a>
+    </div>
+    <div class="table-responsive-sm fill-content-flex tableFixHead">
+      <table class="table table-striped table-borderless">
+        <thead class="font-weigth-bolder text-center bg-white">
+          <tr>
+            <th scope="col">#Matrícula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Titulação</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          {% if object_list and object_list|length > 0 %}
+          {% for professor in object_list %}
+          <tr>
+            <td scope="row">{{professor.matricula}}</td>
+            <td scope="row">{{professor.nome}}</td>
+            <td scope="row">{{professor.endereco}}</td>
+            <td scope="row">{{professor.telefone |mask:"phone"}}</td>
+            <td scope="row">{{professor.get_titulacao_display}}</td>
+            <td scope="row" class="d-flex justify-content-center">
+              <span class="actions">
+                <a class="action" title="Editar" href="{% url 'professor-update' professor.matricula %}">
+                  <i class="fas fa-pen"></i>
+                </a>
+                <a class="action" title="Excluir"
+                  onclick="deleteProfessor('{% url 'professor-delete' professor.matricula %}')">
+                  <i class="fas fa-trash-alt"></i>
+                </a>
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td scope="row" colspan="6"> Não há professor! </td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function deleteProfessor(url) {
+    $.confirm({
+      icon: 'fa fa-warning',
+      title: 'font-awesome',
+      type: 'red',
+      typeAnimated: true,
+      title: 'Deletar',
+      content: 'Você tem certeza que deseja deletar o professor ?',
+      buttons: {
+        confirm: {
+          text: "Sim",
+          btnClass: 'btn-danger',
+          action: function () {
+            //chama http delete
+            $.ajax({
+              url: url,
+              type: 'DELETE'
+            }).then(() => {
+              location.href = location.href;
+            });
+          }
+        },
+        cancel: {
+          text: "Não",
+          action: function () {
+
+          }
+        }
+      }
+    });
+  }
+</script>
+
+{% endblock content  %}

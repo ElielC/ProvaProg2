@@ -1,0 +1,65 @@
+{% extends 'template.html' %}
+{% load filters %}
+
+{% block header %}
+
+{% if form.matricula.value %}
+<a class="a-page">Editar</a>
+{% else %}
+<a class="a-page">Criar</a>
+{% endif %}
+
+{% endblock header %}
+
+{% block content   %}
+<div class="card card-style">
+  <div class="card-body">
+    <form method="POST">
+      {% csrf_token %}
+      {% if form.matricula.value %}
+      <div class="form-group">
+        <label for="{{ form.nome.id_for_label }}">#Matricula</label>
+        <div class="output">
+          {{ form.matricula }}
+          {{form.matricula.value}}
+        </div>
+      </div>
+      {% endif %}
+      <div class="form-group">
+        <label for="{{ form.nome.id_for_label }}">Nome</label>
+        {{form.nome | class:'form-control purple' }}
+        <small id="emailHelp" class="form-text text-muted text-danger">
+          {{form.nome.errors }}
+        </small>
+      </div>
+      <div class="form-group purple">
+        <label for="{{ form.titulacao.id_for_label }}">Titulação</label>
+        {{form.titulacao | class:'select2 custom-select' }}
+        <small id="emailHelp" class="form-text text-muted text-danger">
+          {{form.titulacao.errors }}
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.endereco.id_for_label }}">Endereço</label>
+        {{form.endereco | class:'form-control purple' }}
+        <small id="emailHelp" class="form-text text-muted text-danger">
+          {{form.endereco.errors }}
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.telefone.id_for_label }}">Telefone</label>
+        {{form.telefone | class:'form-control purple phone' }}
+        <small id="emailHelp" class="form-text text-muted text-danger">
+          {{form.telefone.errors }}
+        </small>
+      </div>
+      <div class="d-flex justify-content-end">
+        <a class="btn mr-2 not-button" href="{% url 'professor-list' %}"><i class="fas fa-arrow-left"></i>
+          Cancelar</a>
+        <button type="submit" class="btn ok-button"><i class="fas fa-check"></i> Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content  %}

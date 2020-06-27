@@ -1,0 +1,22 @@
+{% extends 'template.html' %}
+
+{% block header %}
+<a class="a-page">Home</a>
+{% endblock header %}
+
+{% block content   %}
+<div class="card card-style">
+  <div class="card-body">
+    <h5 class="card-title">Tabela de Professores</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Prova 02 - Programação Web</h6>
+    <p class="card-text">Faça uma aplicação web responsiva, com a utilização dos frameworksDjangoe Bootstrap, para
+      inserir, alterar, excluir e listar professores. Nesse caso, crie um banco de dados no SQLite, que contenha a
+      tabela "professor", com os seguintes campos: "matricula", "nome", "endereco", "telefone", "titulacao".
+    </p>
+    <div class="text-right">
+      <a href="{% url 'professor-list' %}" class="btn list-button">Listar</a>
+      <a href="{% url 'professor-create' %}" class="btn ok-button">Criar</a>
+    </div>
+  </div>
+</div>
+{% endblock content  %}
